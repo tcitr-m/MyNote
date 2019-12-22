@@ -1,2 +1,5 @@
 *.iml
-.idea/
+*.class
+/.idea/
+/*/output/
+/demo1/output/
