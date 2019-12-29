@@ -1,3 +1,5 @@
+import singleton.Singleton2;
+
 /**
  * Created by pig on 2019/12/26.
  */

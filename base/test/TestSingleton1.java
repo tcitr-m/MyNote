@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Test;
+import singleton.Singleton1;
 
 /**
  * Created by pig on 2019/12/26.

@@ -1,3 +1,5 @@
+package singleton;
+
 /**
  * Created by pig on 2019/12/26.
  *
@@ -12,8 +14,9 @@ public class Singleton5 {
 
     // 静态方法
     public static Singleton5 getInstance() {
+        // synchronized对第一个if不生效
         if (instace == null) {
-            // 加锁 达到线程安全
+            // （DCL）双端加锁 达到线程安全
             synchronized (Singleton5.class) {
                 if (instace == null) {
                     try {

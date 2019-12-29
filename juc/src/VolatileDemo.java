@@ -1,4 +1,5 @@
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author by PIG
@@ -11,7 +12,12 @@ class MyData {
     }
 
     public void addPlus() {
-        this.number++;
+        this.number++; //不加synchronized在多线程是非线程安全的
+    }
+
+    AtomicInteger atomicInteger = new AtomicInteger();
+    public void addAtomic() {
+        atomicInteger.getAndIncrement(); // +1
     }
 }
 
@@ -23,7 +29,8 @@ class MyData {
  * 2、验证volatile保证原子性
  *  2.1原子性：不可分割，完整性，即某个线程做某个业务时中间不可被加塞，分割需要完整性
  *      同时成功或同时失败
- *  2.2
+ *  2.2 解决
+ *      使用java.util.concurrent 中的 atomicInteger
  */
 public class VolatileDemo {
 
@@ -34,6 +41,7 @@ public class VolatileDemo {
             new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
                     myData.addPlus();
+                    myData.addAtomic();
                 }
             }, String.valueOf(i)).start();
         }
@@ -43,6 +51,7 @@ public class VolatileDemo {
             Thread.yield();
         }
         System.out.println(Thread.currentThread().getName() + "\t  finally number " + myData.number);
+        System.out.println(Thread.currentThread().getName() + "\t  finally atomicInteger " + myData.atomicInteger);
 
 //        try {
 //            TimeUnit.SECONDS.sleep(5);

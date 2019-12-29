@@ -12,11 +12,19 @@
         * 用静态变量的get方法获取
     
 + 饿汉式: 直接创建对象，不存在线程安全问题
-    + [直接实例化](./src/Singleton1.java)
-    + [枚举式](./src/Singleton2.java)
-    + [静态代码块](src/Singleton3.java)
+    + [直接实例化](src/singleton/Singleton1.java)
+    + [枚举式](src/singleton/Singleton2.java)
+    + [静态代码块](src/singleton/Singleton3.java)
 + 懒汉式：延迟创建对象
-    + [线程不安全（适用于单线程）](src/Singleton4.java)
-    + [线程安全（适用于多线程）](src/Singleton6.java)
-    + 静态内部类型（适用于多线程）
+    + [线程不安全（适用于单线程）](src/singleton/Singleton4.java)
+    + [线程安全（适用于多线程）](src/singleton/Singleton5.java)
+    + [静态内部类型（适用于多线程）](src/singleton/Singleton6.java)
+### [类初始化和类实例化](src/initAndInstantiate/Son.java)
+- 类初始化过程
+   - main方法所在的类需要先加载和初始化
+   - 子类初始化先初始化父类
+   - 一个类初始化就是执行\<clinit>()方法
+- 实例初始化过程
+
+- 方法重写    
 

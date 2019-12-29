@@ -1,3 +1,5 @@
+import singleton.Singleton5;
+
 import java.util.concurrent.*;
 
 /**
