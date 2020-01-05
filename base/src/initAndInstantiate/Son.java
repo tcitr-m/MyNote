@@ -2,6 +2,13 @@ package initAndInstantiate;
 
 /**
  * Created by pig on 2019/12/28.
+ *
+ * 子类的实例方法
+ * super()
+ * 方法调用 i=method()
+ * 子类的静态代码块
+ * 子类的构造器
+ *
  */
 public class Son extends Father {
     private int i = test();
@@ -12,6 +19,7 @@ public class Son extends Father {
     }
 
     Son(){
+//        super(); // 无论写不写，子类中一定会调用父类的构造器
         System.out.print("(7)");
     }
     {

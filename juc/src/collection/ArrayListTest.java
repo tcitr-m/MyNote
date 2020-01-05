@@ -1,3 +1,5 @@
+package collection;
+
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -23,4 +25,9 @@ public class ArrayListTest {
             }, String.valueOf(i)).start();
         }
     }
+    /**
+     * 故障现象
+     *  java.util.ConcurrentModificationException
+     *  并发修改错误
+     */
 }

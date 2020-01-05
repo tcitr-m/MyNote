@@ -5,8 +5,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by pig on 2019/12/28.
  *
- * CAS: CompareAndSet
- * 比较并交换
+ * CAS: CompareAndSwap
+ * 比较-并-交换
  *
  */
 public class CASDemo {
