@@ -61,5 +61,24 @@
     add、delete时linkedList由于arrayList
     如果是列表的头尾，则效率差不多
         
-    
+#### 一个字符占多少个字节 int, long, double占多少字节
+|  类型  | 字节  |
+| :---: | :---: |
+|boolean | 1 |
+|byte |1|
+|char |2|
+|int |4|
+|float |4|
+|long |8|
+|double |8|
+#### 创建类的实例的几种方法
+    · 关键字 new。工厂模式是对这种方式的包装
+    · 类实现克隆接口，克隆一个实例。原型模式是一个应用实例
+    · 用该类的加载器，newinstance。java的反射 Spring的依赖注入、切面编程中动态代理
+    · 实现序列化接口的类，通过IO流反序列化读取一个类，获得实例
+#### final/finally/finalize的区别
+    final 用于声明属性、方法和类，分别表示属性不可变、方法不可覆盖、类不可继承
+    finally 作为异常处理的一部分，只能在try/catch语句中用，并附带一个语句块表示这段语句最终一定被执行，经常用来释放或关闭资源
+    finalize Object中的一个方法，在垃圾回收器执行时被调用
+
 

@@ -23,10 +23,12 @@ java.util.concurrent
     3. 有序性
 #### [CAS](src/CAS/CASDemo.java)
     initialValue, expectedValue, newValue
+    Compare-And-Swap 比较内存中的值并交换
+    
     为什么用CAS而不是synchronized
-    syn加锁：
+    synchronized：悲观锁
         并发性下降
-    CAS ：
+    CAS：乐观锁
         循环时间长开销大
         只能保证一个共享变量的原子性
         导致自旋 加大cpu的消耗

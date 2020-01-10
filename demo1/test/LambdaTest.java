@@ -51,24 +51,20 @@ public class LambdaTest {
     public void test4(){
         List<String> list = new ArrayList<>();
         list.add("cosette");
-        myChange(list, new MyFunctionalInterface() {
-            @Override
-            public Map<String, Object> myMethod(List<String> list) {
-                Map<String, Object> map = new HashMap<>();
-                for (String o : list) {
-                    map.put("name", o);
-                }
-                map.put("name", list.get(0));
-                return map;
-            }
-        });
+//        myChange(list, new MyFunctionalInterface() {
+//            @Override
+//            public Map<String, Object> myMethod(List<String> list) {
+//                Map<String, Object> map = new HashMap<>();
+//                list.forEach(o ->  map.put("name", o));
+//                map.put("name", list.get(0));
+//                return map;
+//            }
+//        });
 
         Map myChange = myChange(list, arr -> {
             Map<String, Object> map = new HashMap<>();
-            for (String o : arr) {
-                map.put("name", o);
-            }
-            map.put("name", arr.get(0));
+            arr.forEach(o -> map.put("name", o));
+//            map.put("name", arr.get(0));
             return map;
         });
         System.out.println(myChange);
@@ -82,7 +78,10 @@ public class LambdaTest {
     public void test5(){
         List<String> list = Arrays.asList("仁王", "code vein", "NieR");
 
-        System.out.println(filterString(list, name -> name.equals("code vein")));
+        List<String> stringList = filterString(list, name -> name.equals("code vein"));
+
+
+        System.out.println(stringList);
     }
 
     public List<String> filterString(List<String> list, Predicate<String> predicate) {
