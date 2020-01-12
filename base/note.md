@@ -80,5 +80,14 @@
     final 用于声明属性、方法和类，分别表示属性不可变、方法不可覆盖、类不可继承
     finally 作为异常处理的一部分，只能在try/catch语句中用，并附带一个语句块表示这段语句最终一定被执行，经常用来释放或关闭资源
     finalize Object中的一个方法，在垃圾回收器执行时被调用
-
+#### Cookie 与 Session 的区别
+```
+Cookie是存储在客户端，Session存储在服务端
+Cookie不安全，可以通过本地修改，不可跨域名，最大长度4k，一个网址最多保存20个cookie
+Session存储在服务器上，会占用服务器性能
+```
+#### String,StringBuffer, StringBuilder 的区别是什么？String为什么是不可变的
+```
+String是字符串常量。Stringbuilder和StringBuffer是字符串变量，String创建的字符不可变
+```
 
