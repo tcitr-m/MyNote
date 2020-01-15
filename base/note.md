@@ -81,13 +81,69 @@
     finally 作为异常处理的一部分，只能在try/catch语句中用，并附带一个语句块表示这段语句最终一定被执行，经常用来释放或关闭资源
     finalize Object中的一个方法，在垃圾回收器执行时被调用
 #### Cookie 与 Session 的区别
-```
-Cookie是存储在客户端，Session存储在服务端
-Cookie不安全，可以通过本地修改，不可跨域名，最大长度4k，一个网址最多保存20个cookie
-Session存储在服务器上，会占用服务器性能
-```
+    Cookie是存储在客户端，Session存储在服务端
+    Cookie不安全，可以通过本地修改，不可跨域名，最大长度4k，一个网址最多保存20个cookie
+    Session存储在服务器上，会占用服务器性能
 #### String,StringBuffer, StringBuilder 的区别是什么？String为什么是不可变的
+    String是字符串常量。Stringbuilder和StringBuffer是字符串变量，String创建的字符不可变
+    每次改变String都会自常量池中创建出一个新的对象，而StringBuffer怎是对常量池中的对象进行修改
+    StringBuffer是线程安全的，Sting和StringBullder是不安全的;StringBuffer和StringBuiler原理和操作相同，
+    尽在多线程方面不同，单线程中StringBuilder比StringBuffer性能高
 ```
-String是字符串常量。Stringbuilder和StringBuffer是字符串变量，String创建的字符不可变
+@Test
+public void test(){
+    String a = "a";
+    a = a + "b";
+    String ab = a;
+    System.out.println("a: " +  a); // a: ab
+    a = "ab";
+    System.out.println("ab: " + ab); // ab: ab
+    System.out.println(a == ab); // false
+}
+@Test
+public void stringBufferTest(){
+    StringBuffer sb = new StringBuffer("a");
+    sb.append("b");
+    StringBuffer ab = sb;
+    sb.replace(0, sb.length(), "ab");
+    System.out.println("sb: " + sb); // sb: ab
+    System.out.println("ab: " + ab); // ab: ab
+    System.out.println(sb == ab); // true
+}
 ```
-
+#### Servlet的生命周期
+1. init() 进行初始化
+    > 只会创建一次,
+2. service() 处理客户端的请求。
+    >是执行实际任务的主要方法, Servlet容器（即web服务器）调用service()方法来处理客户端的请求,
+    并把格式化的响应返回个客户端. 
+    服务器每次接收到一个Servlet请求就会产生一个新的线程并调用服务  
+    常用的方法有: doGet(), doPost(), doPut(), doDelete()
+3. destroy() Servlet周期结束时被调用 销毁过程
+最后Servlet有JVM的垃圾回收器进行垃圾回收
+#### java分配一段连续的1G内存,需要注意什么
+ByteBuffer.allocateDirect(1024*1024*1024);
+> 主意对内存造成的**内存溢出(OOM)**
+#### java有内存回收机制,为什么还回内存泄露
+>没有释放对象引用造成的
+```java
+class MyList{
+    /* 
+     * 此处只为掩饰效果，并没有进行封装之类的操作
+     * 将List集合用关键字 static 声明，这时这个集合将不属于任MyList 对象，而是一个类成员变量
+     */  
+    public static List<String> list = new ArrayList<String>();
+}  
+  
+class Demo{  
+    public static void main(String[] args) {  
+        MyList list = new MyList();  
+        list.list.add("123456");  
+        // 此时即便我们将 list指向null，仍然存在内存泄漏，因为MyList中的list是静态的，它属于类所有而不属于任何特定的实例  
+        list = null;  
+    }  
+} 
+```
+#### 什么时序列化,如何实现序列化
+>就是将对象的内容流化处理成二进制,  
+实现序列化需要实现Serializable
