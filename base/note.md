@@ -51,6 +51,16 @@
 #### 局部变量和成员变量
 
 #### Collection类
+> Collection和Collections什么区别
+```
+Collection是集合接口,Collections是一个包装类,包含一些集合操作的静态方法
+├List  
+│   ├LinkedList
+│   ├ArrayList
+│   └Vector
+│       └Stack
+└Set 
+```
 ##### List
     - ArrayList
     - LinkedList
@@ -60,7 +70,12 @@
     get、set时arrayList效率优于linkedList
     add、delete时linkedList由于arrayList
     如果是列表的头尾，则效率差不多
-        
+#### Map
+```
+HashMap和HashTable 
+HashMap是HashTable的轻量级实现,HashMap允许null key和null value,
+HashTable是线程安全的,HashMap是非安全的,因此HashMap效率更高,
+```
 #### 一个字符占多少个字节 int, long, double占多少字节
 |  类型  | 字节  |
 | :---: | :---: |
@@ -112,6 +127,7 @@ public void stringBufferTest(){
 }
 ```
 #### Servlet的生命周期
+加载servlet,创建servlet实例
 1. init() 进行初始化
     > 只会创建一次,
 2. service() 处理客户端的请求。
@@ -119,11 +135,19 @@ public void stringBufferTest(){
     并把格式化的响应返回个客户端. 
     服务器每次接收到一个Servlet请求就会产生一个新的线程并调用服务  
     常用的方法有: doGet(), doPost(), doPut(), doDelete()
-3. destroy() Servlet周期结束时被调用 销毁过程
-最后Servlet有JVM的垃圾回收器进行垃圾回收
+3. destroy() 服务被关闭,Servlet周期结束时被调用 销毁过程
+4. 最后Servlet有JVM的垃圾回收器进行垃圾回收
+
+#### get post区别
+> get 路径传参，隐私性差，参数大小受限制
+>
+> post 传参分为 parameter和body data，\
+>一个是以key-value的形式放在请求路径中，一个是放在body中
+
 #### java分配一段连续的1G内存,需要注意什么
-ByteBuffer.allocateDirect(1024*1024*1024);
-> 主意对内存造成的**内存溢出(OOM)**
+`ByteBuffer.allocateDirect(1024*1024*1024)`
+> 注意对内存造成的**内存溢出(OOM)**
+
 #### java有内存回收机制,为什么还回内存泄露
 >没有释放对象引用造成的
 ```java
@@ -147,3 +171,61 @@ class Demo{
 #### 什么时序列化,如何实现序列化
 >就是将对象的内容流化处理成二进制,  
 实现序列化需要实现Serializable
+
+#### request.getParameter和request.getAttribute的区别
+> 1.赋值方式不同parameter是客户端发给服务端的,attribute是服务端就收之后存进去的
+> 2.parameter返回值是字符串,attribute返回的是对象
+>
+#### tomcat有几种部署方式
+> 三种:
+>+ 直接部署在webapps文件夹下,在server.xml文件配置相关属性即可
+>+ 项目放到任意文件夹中,通过`con/server.xml`文件
+```xml
+<Context path="/网站名" docBase="所在路径"/>
+```
+>+ 在`conf/Catalina/localhost`文件夹中创建一个xml文件,文件名即为网站名称  
+```xml
+<?xml version="1.0" encoding="UTF-8"?> 
+<Context 
+    docBase="D:\web1" 
+    reloadable="true"> 
+</Context> 
+```
+
+#### forward(转发)和redirect(重定向) 区别
+| |转发|重定向|
+|:---|:----|----|
+|发生位置| 发生在服务器| 发生在浏览器|
+|地质变化| 浏览器地址不变|地址栏地址改变|
+|范围|只能访问当前web服务下的资源|可以访问任何资源|
+|传递的数据类型|可以传递任何数据类型，包括对象|重定向只可以是字符|
+|发生时间|执行到转跳语句会立即转跳|整个页面执行完之后才执行|
+
+#### cookie、session和token
+> http是无状态性的，每次请求都是无关联的，session由服务器创建并存储在服务端，拥有唯一标识sessionId，给客户端发送一个响应，  
+> 响应头中包含set-cookie(其中包含sessionId),如果客户端发送第二次请求时，发现有set-cookie，就会在请求头中添加cookie  
+> cookie只是实现session的一种方案，一般都是`cookie + session`同时使用  
+> token由`uid + time + sign[+固定参数]`
+> + uid：用户唯一标识
+> + time：当前时间戳
+> + sign：签名，加密算法
+> 用户登录时由服务器创建，通过响应返回给客户端，客户端每次请求时把token放在请求头中，服务端采用filter校验
+> cookie+session不适合分布式或集群
+> jwt(json web token)是一种跨域认证方式
+
+| |cookie|session|token|
+|---|---|---|---|
+| |存储在客户端，有浏览器自动添加|存储在服务端|存储在客户端，需要手动添加|
+
+#### servlet安全性
+> servlet是单例的,应注意共享变量的多线程安全问题,加锁或者使用线程安全的类
+
+#### Thread的 run() 和start()
+> start()方法启动一个线程,线程处于就绪状态,  
+> run()方法被称为线程体,包含线程要运行的内容,  
+> run()方法运行结束,则线程终止,start()方法重复调用,  
+> 每次使用不用等待run()方法执行完毕,即可继续执行之后的代码,即创建了一个新的线程
+> run()方法可以被重复调用,如果直接调用run()方法,则程序中只有主线程,  
+> 其程序按顺序执行,需等待run()方法体中的方法执行完毕后才可执行下面的代码
+>
+>start是开启一个新的线程,run只是一个普通的方法调用
