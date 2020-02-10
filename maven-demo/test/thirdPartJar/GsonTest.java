@@ -2,12 +2,10 @@ package thirdPartJar;
 
 
 import com.google.gson.Gson;
-import entity.Gundam;
+import main.java.entity.Gundam;
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 

@@ -1,4 +1,4 @@
-package entity;
+package main.java.entity;
 
 /**
  * Created by pig on 2020/1/26.

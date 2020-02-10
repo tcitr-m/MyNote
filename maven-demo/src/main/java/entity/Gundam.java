@@ -1,8 +1,6 @@
-package entity;
+package main.java.entity;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by pig on 2020/1/3.

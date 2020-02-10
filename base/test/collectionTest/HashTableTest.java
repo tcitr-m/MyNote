@@ -1,6 +1,6 @@
 package collectionTest;
 
-import entity.Person;
+import main.java.entity.Person;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
