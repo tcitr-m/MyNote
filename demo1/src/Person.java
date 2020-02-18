@@ -4,7 +4,7 @@
 public class Person {
 
     private String name;
-    private double height;
+    private Double height;
 
     public Person(String name, double height) {
         this.name = name;
@@ -22,11 +22,11 @@ public class Person {
         this.name = name;
     }
 
-    public double getHeight() {
+    public Double getHeight() {
         return height;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(Double height) {
         this.height = height;
     }
 }

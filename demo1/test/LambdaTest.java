@@ -77,21 +77,32 @@ public class LambdaTest {
     @Test
     public void test5(){
         List<String> list = Arrays.asList("仁王", "code vein", "NieR");
-
         List<String> stringList = filterString(list, name -> name.equals("code vein"));
-
-
         System.out.println(stringList);
     }
 
     public List<String> filterString(List<String> list, Predicate<String> predicate) {
         ArrayList<String> filterList = new ArrayList<>();
-
         for (String s : list) {
             if (predicate.test(s)) {
                 filterList.add(s);
             }
         }
         return filterList;
+    }
+
+    @Test
+    public void test(){
+        Long r = new Date().getTime();
+        String param = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
+        String q = replace(param, t -> {
+            // 你要替换为的算法
+            return param.replaceAll("yx", "@@@@");
+        });
+        System.out.println(q);
+    }
+
+    private String replace(String param, MyFun myFun) {
+        return myFun.myReplace(param);
     }
 }
