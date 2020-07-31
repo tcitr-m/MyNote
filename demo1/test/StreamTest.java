@@ -1,10 +1,7 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +13,6 @@ public class StreamTest {
 
 
 	@BeforeAll
-
 	public static void test() {
 		System.out.println("测试之前");
 		for (int i = 0; i < 5; i++) {
@@ -31,14 +27,42 @@ public class StreamTest {
 		list.add(person);
 	}
 
+
+	@Test
+	public void test3(){
+        List<String> list = Arrays.asList("aa", "bb", "cc");
+
+//        list.stream().map();
+
+    }
+
+    private static Stream<Character> fromStringToStream(String str) {
+//        ArrayList<Stream> list = new ArrayList<>();
+//        for (Character c : str.toCharArray()) {
+//            list.add(c);
+//        }
+//
+//        Character character = Character.valueOf(chars[0]);
+//        ArrayList<Character>
+        return null;
+    }
+
+    /**
+     * 创建无限流
+     * 可用来创建随机数组
+     */
 	@Test
 	public void test2(){
-		System.out.println();
+	    // iterate 迭代
+        Stream.iterate(0, t -> t + 2).limit(10).forEach(System.out::println);
+
+        // generate 生成
+        Stream.generate(Math::random).limit(10).forEach(System.out::println);
 	}
 
 
 	@Test
-	public void test1() {
+    void test1() {
 		List<Person> list = EmployeeData.getEmployeeData();
 
 		// default Stream<e> stream() 返回一个顺序流
