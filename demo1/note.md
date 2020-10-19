@@ -10,6 +10,11 @@
 ### 方法引用
 
 ### Stream
+#### 实例化
++ iterate
+    + iterate(curr, fun)
++ generate
+
 #### 中间操作
 |方法|描述|
 |---|:---:|

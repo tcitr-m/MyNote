@@ -29,4 +29,13 @@ public class Person {
     public void setHeight(Double height) {
         this.height = height;
     }
+
+	@Override
+	public String toString() {
+		return "Person{" +
+			"name='" + name + '\'' +
+			", height=" + height +
+			'}';
+	}
+
 }

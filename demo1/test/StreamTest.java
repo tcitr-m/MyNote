@@ -2,6 +2,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -10,7 +12,6 @@ import java.util.stream.Stream;
 public class StreamTest {
 
 	static List<Person> list = new ArrayList();
-
 
 	@BeforeAll
 	public static void test() {
@@ -29,6 +30,20 @@ public class StreamTest {
 
 
 	@Test
+	public void testSorted2(){
+		List<Person> list = EmployeeData.getEmployeeData();
+		list.stream().sorted(Comparator.comparingDouble(Person::getHeight)).
+			forEach(System.out::println);
+	}
+	@Test
+	public void testSorted(){
+		List<Integer> list = Stream.generate(() -> new Random().nextInt(100))
+			.limit(7).collect(Collectors.toList());
+		list.forEach(System.out::println);
+		System.out.println("--------------------");
+	}
+
+	@Test
 	public void test3(){
         List<String> list = Arrays.asList("aa", "bb", "cc");
 
@@ -36,15 +51,14 @@ public class StreamTest {
 
     }
 
-    private static Stream<Character> fromStringToStream(String str) {
-//        ArrayList<Stream> list = new ArrayList<>();
-//        for (Character c : str.toCharArray()) {
-//            list.add(c);
-//        }
-//
+    private static ArrayList<Character> fromStringToStream(String str) {
+        ArrayList<Character> list = new ArrayList<>();
+        for (Character c : str.toCharArray()) {
+            list.add(c);
+        }
 //        Character character = Character.valueOf(chars[0]);
 //        ArrayList<Character>
-        return null;
+        return list;
     }
 
     /**
