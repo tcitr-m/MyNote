@@ -8,9 +8,7 @@ import java.util.concurrent.*;
 public class TestSingleton5 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        Callable<Singleton5> callable = () -> {
-            return Singleton5.getInstance();
-        };
+        Callable<Singleton5> callable = Singleton5::getInstance;
 
         ExecutorService service = Executors.newFixedThreadPool(2);
 
