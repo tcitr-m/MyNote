@@ -31,9 +31,7 @@ public class SingletonDemo {
 //        System.out.println(SingletonDemo.getInstance() == SingletonDemo.getInstance());
 
         for (int i = 0; i < 10; i++) {
-            new Thread(() -> {
-                SingletonDemo.getInstance();
-            }, String.valueOf(i)).start();
+            new Thread(SingletonDemo::getInstance, String.valueOf(i)).start();
         }
     }
 }
