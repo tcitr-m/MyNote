@@ -68,7 +68,7 @@ Collection是集合接口,Collections是一个包装类,包含一些集合操作
     arrayList是基于动态数组， 通过下标操作元素
     linkedList基于实现链表，通过指针操作元素
     get、set时arrayList效率优于linkedList
-    add、delete时linkedList由于arrayList
+    add、delete时linkedList优于arrayList
     如果是列表的头尾，则效率差不多
 #### Map
 ```

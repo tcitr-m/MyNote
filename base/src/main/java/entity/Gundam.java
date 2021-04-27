@@ -34,6 +34,17 @@ public class Gundam {
         return list;
     }
 
+    @Override
+    public String toString() {
+        return "Gundam{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", belong='" + belong + '\'' +
+                ", bodyWeight=" + bodyWeight +
+                ", fullWeight=" + fullWeight +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

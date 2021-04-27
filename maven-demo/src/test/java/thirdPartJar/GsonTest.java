@@ -2,7 +2,7 @@ package thirdPartJar;
 
 
 import com.google.gson.Gson;
-import main.java.entity.Gundam;
+//import main.java.entity.Gundam;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -16,14 +16,12 @@ public class GsonTest {
 
     @Test
     public void test(){
-        LinkedList<Gundam> list = new Gundam().getList();
-        ListIterator<Gundam> iterator = list.listIterator();
-        while (iterator.hasNext()) {
-            Gundam next = iterator.next();
-            System.out.println(next.toString());
-        }
-
-
+//        LinkedList<Gundam> list = new Gundam().getList();
+//        ListIterator<Gundam> iterator = list.listIterator();
+//        while (iterator.hasNext()) {
+//            Gundam next = iterator.next();
+//            System.out.println(next.toString());
+//        }
 
         ConcurrentLinkedDeque linkedDeque = new ConcurrentLinkedDeque();
         Gson gson = new Gson();

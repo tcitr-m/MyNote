@@ -1,4 +1,5 @@
-import main.java.entity.Gundam;
+package java;
+
 import org.junit.jupiter.api.Test;
 
 /**
@@ -8,6 +9,6 @@ public class BeanMapTest {
 
 	@Test
 	public void test1(){
-		Gundam entity = new Gundam();
+//		Gundam entity = new Gundam();
 	}
 }

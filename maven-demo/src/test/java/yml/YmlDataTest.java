@@ -1,20 +1,16 @@
-import main.java.entity.Actress;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.ValueSource;
+package yml;
+
+import entity.Actress;
+import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Properties;
+import java.io.InputStream;
 
 /**
  * Created by pig on 2020/8/1.
  */
 public class YmlDataTest {
-
-	private  Actress actress;
 
 //	static {
 //
@@ -34,17 +30,15 @@ public class YmlDataTest {
 
 	@Test
 	public void test(){
+		InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream("data.yml");
+		Yaml yaml = new Yaml();
+		Actress actress = yaml.loadAs(resourceAsStream, Actress.class);
 		try {
-			File file = new File("data.yml");
-			String path = file.getPath();
-
-			FileInputStream fileInputStream = new FileInputStream("data.yml");
-			Yaml yaml = new Yaml();
-			Object load = yaml.load(fileInputStream);
-			System.out.println(load);
-		} catch (FileNotFoundException e) {
+			resourceAsStream.close();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+		System.out.println(actress);
 	}
 }
