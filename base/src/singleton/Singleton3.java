@@ -18,7 +18,7 @@ public class Singleton3 {
         Properties pro = new Properties();
         try {
             // 动态读取配置数据
-            pro.load(Singleton3.class.getClassLoader().getResourceAsStream("single.properties"));
+			pro.load(Singleton3.class.getClassLoader().getResourceAsStream("single.properties"));
             INSTANCE = new Singleton3(pro.getProperty("info"));
         } catch (IOException e) {
             e.printStackTrace();

@@ -12,13 +12,13 @@ import java.util.function.Predicate;
  * 接口只能有一个方法
  * 接口中只声明了一个抽象方法，则称为FunctionalInterface(函数式接口)
  */
-public class LambdaTest {
+class LambdaTest {
 
     /**
      * 有参数 无返回值
      */
     @Test
-    public void test1(){
+    void test1(){
         Consumer<String> con = new Consumer<String>() {
             @Override
             public void accept(String s) {

@@ -16,8 +16,11 @@
 + generate
 
 #### 中间操作
-|方法|描述|
-|---|:---:|
+| 方法  |描述|
+|-----|:---:|
+
+### Instant
+  获取当前时间，格林威治时间
 
 ### LocalDateTime LocalDate LocalTime
 ```text
@@ -36,5 +39,8 @@
 + 调整时：withHour()
 + 调整分：withMinute()
 + 调整秒：withSecond()
+
+#### TemporalAdjusters
+
 
 ### ZonedDateTime
