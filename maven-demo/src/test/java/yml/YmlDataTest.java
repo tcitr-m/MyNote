@@ -29,15 +29,12 @@ public class YmlDataTest {
 //	}
 
 	@Test
-	public void test(){
+	public void test() throws IOException {
+		// src/test/resources/data.yml
 		InputStream resourceAsStream = this.getClass().getClassLoader().getResourceAsStream("data.yml");
-		Yaml yaml = new Yaml();
+		var yaml = new Yaml();
 		Actress actress = yaml.loadAs(resourceAsStream, Actress.class);
-		try {
-			resourceAsStream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		boolean blank = actress.getBirth().isBlank();
 
 		System.out.println(actress);
 	}
