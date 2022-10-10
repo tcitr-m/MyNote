@@ -1,6 +1,9 @@
 *.iml
 *.class
+
 /.idea/
 /*/output/
 /output/
 /out/
+/target/
+target/
